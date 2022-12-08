@@ -6,4 +6,4 @@
 int main(void)
 	puts("\"programing is like develop a multlingual puzzle );
 	return (0);
-
+	
