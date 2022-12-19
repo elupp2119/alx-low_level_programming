@@ -1,51 +1,36 @@
 #include "main.h"
 /**
- *  * *_strcpy -  copies the string pointed to by src
- *   * @dest: char type string
- *    * @src: char t#include "main.h"
+ *  * is_numerical - check if it is a digit
+ *   * @n: Number
+ *    * Return: If is a number, return 1 else return 0
  */
- * _atoi - Convert a string to an integer.
- *  * @s: The pointer to convert
- *   *
- *    * Return: A integer
- *     */
- int _atoi(char *s)
+int is_numerical(unsigned int n)
 {
-int c = 0;
-unsigned int ni = 0;
-int min = 1;
-int isi = 0;
-while (s[c])
-{
-if (s[c] == 45)
-{
-min *= -1;
+return (n >= '0' &&  n <= '9');
 }
-while (s[c] >= 48 && s[c] <= 57)
-{isi = 1;
-ni = (ni * 10) + (s[c] - '0');
-c++;
-}
-if (isi == 1)
+/**
+ *  * _atoi - convert a string to an integer
+ *   *@s: String
+ *    * Return: Return the num
+ */
+int _atoi(char *s)
 {
+unsigned int number, i;
+int sign;
+sign = 1;
+number = 0;
+for (i = 0; s[i] != '\0'; i++)
+{
+if (is_numerical(s[i]))
+{
+number = (s[i] - 48) + number * 10;
+if (s[i + 1] == ' ')
 break;
 }
-c++;
-}
-ni *= min;
-return (ni);
-}ype string
- * Description: Copy the string pointed to by pointer `src` to
- *  * the buffer pointed to by `dest`
- *   * Return: Pointer to `dest
-   */
-char *_strcpy(char *dest, char *src)
+else if (s[i] == '-')
 {
-int i = -1;
-do {
-i++;
-dest[i] = src[i];
-} while (src[i] != '\0');
-return (dest);
+sign *= -1;
 }
-
+}
+return (number *sign);
+}
